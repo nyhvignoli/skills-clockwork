@@ -1,5 +1,6 @@
 import './App.css'
 import skills from './data/skills.json'
+import profileImg from './assets/profile.jpg'
 
 function App() {
   const getExperienceTime = (startDate, endDate) => {
@@ -56,8 +57,20 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Hard Skills Clockwork</h1>
-      <span>Experience time separate by skill</span>
+      <header className="Header">
+        <a
+          href="http://nyhdevignoli.surge.sh/"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <img src={profileImg} alt="Nyh Vignoli profile" />
+        </a>
+        <div>
+          <h2>Nyh Vignoli - Full Stack Developer</h2>
+          <h1>Hard Skills Clockwork</h1>
+          <span>Experience time for each skill</span>
+        </div>
+      </header>
       <div className="Skills-wrapper">
         {skills.map(({ name, startDate, endDate }) => {
           return (
