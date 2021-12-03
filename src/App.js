@@ -22,7 +22,7 @@ function App() {
 
   const convertMonthsToYear = (months) => {
     const monthsPerYear = months / 12
-    const monthsPerYearRounded = Math.round(monthsPerYear)
+    const monthsPerYearRounded = Math.floor(monthsPerYear)
     if (
       hasAtLeastOneYear(monthsPerYear) &&
       addRemainingMonths(months) === null
@@ -58,14 +58,24 @@ function App() {
   return (
     <div className="App">
       <header className="Header">
-        <a
-          href="http://nyhdevignoli.surge.sh/"
-          target="_blank"
-          rel="noreferrer"
-        >
-          <img src={profileImg} alt="Nyh Vignoli profile" />
-        </a>
-        <div>
+        <div className="Avatar-wrapper">
+          <a
+            href="http://nyhdevignoli.surge.sh/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <img
+              className="Profile"
+              src={profileImg}
+              alt="Nyh Vignoli profile"
+            />
+          </a>
+          <div className="Total-xp-wrapper">
+            <h5>Total Experience</h5>
+            <span>{getExperienceTime('2020-03-15')}</span>
+          </div>
+        </div>
+        <div className="Titles-wrapper">
           <h2>Nyh Vignoli - Full Stack Developer</h2>
           <h1>Hard Skills Clockwork</h1>
           <span>Experience time for each skill</span>

@@ -14,6 +14,22 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.App::before {
+  content: '';
+  background-image: url('/src/assets/blob.svg');
+  background-repeat: no-repeat;
+  position: absolute;
+  width: 1000px;
+  background-size: cover;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  opacity: 0.28;
+  object-fit: cover;
 }
 
 .Header {
@@ -21,21 +37,22 @@
   width: 100%;
   gap: 24px;
   align-items: center;
-  text-align: start;
+  justify-content: space-between;
+  text-align: end;
   padding: 24px 0;
   margin-bottom: 24px;
 }
 
-img {
+.Profile {
   box-shadow: 0 -1px 6px rgba(0, 0, 0, 0.7);
-  width: 160px;
-  height: 160px;
+  width: 100px;
+  height: 100px;
   border-radius: 50%;
   opacity: 0.7;
   transition: all 0.2s;
 }
 
-img:hover {
+.Profile:hover {
   box-shadow: 0 -1px 10px rgba(171, 128, 252, 0.9);
   transition: all 0.2s;
   cursor: pointer;
@@ -48,7 +65,27 @@ h1 {
 }
 
 h2 {
+  font-size: 32px;
   opacity: 0.85;
+}
+
+.Avatar-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Total-xp-wrapper {
+  border-bottom: 2px solid rgba(171, 128, 252, 0.3);
+  display: flex;
+  padding: 10px 12px;
+  flex-direction: column;
+  gap: 4px;
+  align-items: flex-start;
+  justify-content: center;
+  justify-self: flex-end;
+  align-self: flex-start;
+  text-align: end;
 }
 
 span {
@@ -64,7 +101,6 @@ p {
 
 h5 {
   font-size: 16px;
-  margin-right: 24px;
   opacity: 0.7;
 }
 
@@ -73,6 +109,7 @@ h5 {
   flex-wrap: wrap;
   justify-content: space-between;
   text-align: start;
+  z-index: 200;
 }
 
 .Skills {
@@ -87,14 +124,50 @@ h5 {
   margin-bottom: 8px;
 }
 
-@media (min-width: 1068px) {
+@media (min-width: 1200px) {
   .App {
-    padding-right: 160px;
-    padding-left: 160px;
+    padding-right: 180px;
+    padding-left: 180px;
   }
 }
 
-@media (max-width: 900px) {
+@media (max-width: 960px) {
+  .App {
+    padding-right: 80px;
+    padding-left: 80px;
+  }
+
+  .App::before {
+    width: 800px;
+    top: 100px;
+    background-size: contain;
+  }
+
+  h2 {
+    font-size: 24px;
+  }
+
+  h1 {
+    font-size: 34px;
+  }
+
+  .Titles-wrapper {
+    max-width: 50%;
+  }
+}
+
+@media (max-width: 769px) {
+  .App {
+    padding-right: 48px;
+    padding-left: 48px;
+  }
+
+  .App::before {
+    width: 800px;
+    top: -60px;
+    background-size: cover;
+  }
+
   .Header {
     flex-direction: column;
     text-align: center;
@@ -103,11 +176,42 @@ h5 {
   .Skills {
     width: 100%;
   }
+
+  .Titles-wrapper {
+    max-width: 100%;
+  }
 }
 
 @media (max-width: 480px) {
   .App {
-    padding-right: 24px;
-    padding-left: 24px;
+    padding-right: 18px;
+    padding-left: 18px;
+  }
+
+  .App::before {
+    width: 700px;
+    top: 10px;
+  }
+}
+
+@media (max-width: 320px) {
+  .App {
+    padding-right: 8px;
+    padding-left: 8px;
+  }
+
+  .App::before {
+    width: 700px;
+    top: 160px;
+    right: -300px;
+    background-size: contain;
+  }
+
+  h2 {
+    font-size: 18px;
+  }
+
+  h1 {
+    font-size: 24px;
   }
 }
