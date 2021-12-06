@@ -4,11 +4,11 @@ import profileImg from './assets/profile.jpg'
 
 function App() {
   const getExperienceTime = (startDate, endDate) => {
-    const months = calculateExperienceTime(startDate, endDate)
-    return convertMonthsToYear(months)
+    const months = calculateExperienceTimeInMonths(startDate, endDate)
+    return convertMonthsToYears(months)
   }
 
-  const calculateExperienceTime = (startDate, endDate) => {
+  const calculateExperienceTimeInMonths = (startDate, endDate) => {
     const currentDate = endDate ? new Date(endDate) : new Date()
     const givenDate = new Date(startDate)
 
@@ -20,7 +20,7 @@ function App() {
     return currentMonth + 12 * currentYear - (startMonth + 12 * startYear)
   }
 
-  const convertMonthsToYear = (months) => {
+  const convertMonthsToYears = (months) => {
     const monthsPerYear = months / 12
     const monthsPerYearRounded = Math.floor(monthsPerYear)
     if (
@@ -55,6 +55,20 @@ function App() {
     return null
   }
 
+  const skillsOrderedByExperienceTime = skills
+    .map((skill) => {
+      return {
+        ...skill,
+        experienceTimeInMonths: calculateExperienceTimeInMonths(
+          skill.startDate,
+          skill.endDate
+        )
+      }
+    })
+    .sort((a, b) => {
+      return b.experienceTimeInMonths - a.experienceTimeInMonths
+    })
+
   return (
     <div className="App">
       <header className="Header">
@@ -82,7 +96,7 @@ function App() {
         </div>
       </header>
       <div className="Skills-wrapper">
-        {skills.map(({ name, startDate, endDate }) => {
+        {skillsOrderedByExperienceTime.map(({ name, startDate, endDate }) => {
           return (
             <div key={name} className="Skills">
               <h5>{name}</h5>
