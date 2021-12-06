@@ -2,59 +2,54 @@ import './App.css'
 import skills from './data/skills.json'
 import profileImg from './assets/profile.jpg'
 
+export const getExperienceTime = (startDate, endDate) => {
+  const months = calculateExperienceTimeInMonths(startDate, endDate)
+  return convertMonthsToYears(months)
+}
+
+export const calculateExperienceTimeInMonths = (startDate, endDate) => {
+  const currentDate = endDate ? new Date(endDate) : new Date()
+  const givenDate = new Date(startDate)
+
+  const currentYear = currentDate.getFullYear()
+  const currentMonth = currentDate.getMonth()
+  const startYear = givenDate.getFullYear()
+  const startMonth = givenDate.getMonth()
+
+  return currentMonth + 12 * currentYear - (startMonth + 12 * startYear)
+}
+
+export const convertMonthsToYears = (months) => {
+  const monthsPerYear = months / 12
+  const monthsPerYearRounded = Math.floor(monthsPerYear)
+  if (hasAtLeastOneYear(monthsPerYear) && addRemainingMonths(months) === null) {
+    return `${monthsPerYearRounded} year${monthsPerYearRounded > 1 ? `s` : ''}`
+  }
+
+  if (hasAtLeastOneYear(monthsPerYear)) {
+    return `${monthsPerYearRounded} year${
+      monthsPerYearRounded > 1 ? `s` : ''
+    } + ${addRemainingMonths(months)}`
+  }
+
+  return addRemainingMonths(months)
+}
+
+export const hasAtLeastOneYear = (monthsPerYear) => {
+  if (monthsPerYear < 1) return false
+  return true
+}
+
+export const addRemainingMonths = (months) => {
+  const module = months % 12
+  if (module !== 0) {
+    return `${module} month${module > 1 ? `s` : ''}`
+  }
+
+  return null
+}
+
 function App() {
-  const getExperienceTime = (startDate, endDate) => {
-    const months = calculateExperienceTimeInMonths(startDate, endDate)
-    return convertMonthsToYears(months)
-  }
-
-  const calculateExperienceTimeInMonths = (startDate, endDate) => {
-    const currentDate = endDate ? new Date(endDate) : new Date()
-    const givenDate = new Date(startDate)
-
-    const currentYear = currentDate.getFullYear()
-    const currentMonth = currentDate.getMonth()
-    const startYear = givenDate.getFullYear()
-    const startMonth = givenDate.getMonth()
-
-    return currentMonth + 12 * currentYear - (startMonth + 12 * startYear)
-  }
-
-  const convertMonthsToYears = (months) => {
-    const monthsPerYear = months / 12
-    const monthsPerYearRounded = Math.floor(monthsPerYear)
-    if (
-      hasAtLeastOneYear(monthsPerYear) &&
-      addRemainingMonths(months) === null
-    ) {
-      return `${monthsPerYearRounded} year${
-        monthsPerYearRounded > 1 ? `s` : ''
-      }`
-    }
-
-    if (hasAtLeastOneYear(monthsPerYear)) {
-      return `${monthsPerYearRounded} year${
-        monthsPerYearRounded > 1 ? `s` : ''
-      } + ${addRemainingMonths(months)}`
-    }
-
-    return addRemainingMonths(months)
-  }
-
-  const hasAtLeastOneYear = (monthsPerYear) => {
-    if (monthsPerYear < 1) return false
-    return true
-  }
-
-  const addRemainingMonths = (months) => {
-    const module = months % 12
-    if (module !== 0) {
-      return `${module} month${module > 1 ? `s` : ''}`
-    }
-
-    return null
-  }
-
   const skillsOrderedByExperienceTime = skills
     .map((skill) => {
       return {
