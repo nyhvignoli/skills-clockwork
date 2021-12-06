@@ -4,7 +4,7 @@ import profileImg from './assets/profile.jpg'
 
 export const getExperienceTime = (startDate, endDate) => {
   const months = calculateExperienceTimeInMonths(startDate, endDate)
-  return convertMonthsToYears(months)
+  return convertMonthsToYears(months, hasAtLeastOneYear, addRemainingMonths)
 }
 
 export const calculateExperienceTimeInMonths = (startDate, endDate) => {
@@ -19,9 +19,14 @@ export const calculateExperienceTimeInMonths = (startDate, endDate) => {
   return currentMonth + 12 * currentYear - (startMonth + 12 * startYear)
 }
 
-export const convertMonthsToYears = (months) => {
+export const convertMonthsToYears = (
+  months,
+  hasAtLeastOneYear,
+  addRemainingMonths
+) => {
   const monthsPerYear = months / 12
   const monthsPerYearRounded = Math.floor(monthsPerYear)
+
   if (hasAtLeastOneYear(monthsPerYear) && addRemainingMonths(months) === null) {
     return `${monthsPerYearRounded} year${monthsPerYearRounded > 1 ? `s` : ''}`
   }
