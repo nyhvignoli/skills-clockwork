@@ -1,4 +1,4 @@
-import { addRemainingMonths } from './App'
+import { addRemainingMonths, hasAtLeastOneYear } from './App'
 
 describe('# addRemainingMonths', () => {
   it('Should add 1 remaining month given 13 months', () => {
@@ -14,5 +14,22 @@ describe('# addRemainingMonths', () => {
   it('Should return null given 12 months', () => {
     const result = addRemainingMonths(12)
     expect(result).toBe(null)
+  })
+})
+
+describe('# hasAtLeastOneYear', () => {
+  it('Should return false if monthsPerYear is less than 1', () => {
+    const result = hasAtLeastOneYear(0.9)
+    expect(result).toBe(false)
+  })
+
+  it('Should return true if monthsPerYear is equal to 1', () => {
+    const result = hasAtLeastOneYear(1)
+    expect(result).toBe(true)
+  })
+
+  it('Should return true if monthsPerYear is greater than 1', () => {
+    const result = hasAtLeastOneYear(2)
+    expect(result).toBe(true)
   })
 })
