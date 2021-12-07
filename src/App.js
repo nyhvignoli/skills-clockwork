@@ -11,10 +11,11 @@ const App = () => {
         title="Hard Skills Clockworks"
         name="Nyh Vignoli"
         profession="Full Stack Developer"
+        websiteUrl="http://nyhdevignoli.surge.sh/"
         profileImg={{ src: profileImg, alt: 'Nyh Vignoli profile' }}
         experienceTime={getExperienceTime(totalExperience.startDate)}
       />
-      <Content title="Experience time for each skill" skills={skills} />
+      <Content title="Experience time by skill" skills={skills} />
       <footer>© 2021 ~ Developed with ♥ by Aline "Nyh" Vignoli</footer>
     </div>
   )

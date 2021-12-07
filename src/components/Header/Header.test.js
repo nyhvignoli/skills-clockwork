@@ -38,6 +38,15 @@ describe('# Header', () => {
     expect(experienceTime).toBeInTheDocument()
   })
 
+  it('Should render with the correct href', () => {
+    const url = 'https://github.com/nyhvignoli'
+
+    render(<Header websiteUrl={url} />)
+    const link = screen.getByRole('link')
+    expect(link).toBeInTheDocument()
+    expect(link).toHaveAttribute('href', url)
+  })
+
   it('Should render with custom profile image', () => {
     const image = {
       src: 'https://i.ibb.co/y54rg3Z/skills-clockwork-thumbnail.png',

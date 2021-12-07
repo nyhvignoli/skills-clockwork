@@ -4,17 +4,14 @@ export const Header = ({
   title,
   name,
   profession,
+  websiteUrl = '',
   profileImg = { src: '', alt: '' },
   experienceTime
 }) => {
   return (
     <header aria-label="header" className="Header">
       <div className="Avatar-wrapper">
-        <a
-          href="http://nyhdevignoli.surge.sh/"
-          target="_blank"
-          rel="noreferrer"
-        >
+        <a href={websiteUrl} target="_blank" rel="noreferrer">
           <img
             className="Profile"
             src={profileImg.src || ''}
