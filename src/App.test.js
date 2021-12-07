@@ -2,7 +2,7 @@ import {
   addRemainingMonths,
   convertMonthsToYears,
   hasAtLeastOneYear
-} from './App'
+} from './helpers/helpers'
 
 describe('# addRemainingMonths', () => {
   it('Should add 1 remaining month given 13 months', () => {
