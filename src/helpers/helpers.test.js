@@ -68,6 +68,17 @@ describe('# convertMonthsToYears', () => {
     expect(result).toBe(`1 year + 2 months`)
   })
 
+  it('Should return 2 years and 2 months', () => {
+    const hasAtLeastOneYearMock = jest.fn(() => true)
+    const addRemainingMonthsMock = jest.fn(() => `2 months`)
+    const result = convertMonthsToYears(
+      26,
+      hasAtLeastOneYearMock,
+      addRemainingMonthsMock
+    )
+    expect(result).toBe(`2 years + 2 months`)
+  })
+
   it('Should return just months', () => {
     const hasAtLeastOneYearMock = jest.fn(() => false)
     const addRemainingMonthsMock = jest.fn(() => `2 months`)
