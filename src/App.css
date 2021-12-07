@@ -40,7 +40,6 @@
   justify-content: space-between;
   text-align: end;
   padding: 24px 0;
-  margin-bottom: 24px;
 }
 
 .Profile {
@@ -60,7 +59,7 @@
 
 h1 {
   color: rgba(72, 255, 215, 0.8);
-  margin: 24px 0 12px 0;
+  margin: 24px 0;
   opacity: 0.85;
 }
 
@@ -88,8 +87,10 @@ h2 {
   text-align: end;
 }
 
+h3,
 span {
   font-size: 18px;
+  font-weight: normal;
   opacity: 0.6;
   font-style: italic;
 }
