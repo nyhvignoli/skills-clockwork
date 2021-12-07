@@ -1,4 +1,5 @@
 import './App.css'
+import skills from './data/skills.json'
 import profileImg from './assets/profile.jpg'
 import { getExperienceTime } from './helpers'
 import { Header, Content } from './components'
@@ -13,7 +14,7 @@ const App = () => {
         profileImg={{ src: profileImg, alt: 'Nyh Vignoli profile' }}
         experienceTime={getExperienceTime('2020-03-15')}
       />
-      <Content title="Experience time for each skill" />
+      <Content title="Experience time for each skill" skills={skills} />
       <footer>© 2021 ~ Developed with ♥ by Aline "Nyh" Vignoli</footer>
     </div>
   )
