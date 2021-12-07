@@ -105,6 +105,7 @@ function App() {
           )
         })}
       </div>
+      <footer>© 2021 ~ Developed with ♥ by Aline "Nyh" Vignoli</footer>
     </div>
   )
 }
