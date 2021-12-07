@@ -8,15 +8,15 @@ export const getExperienceTime = (startDate, endDate) => {
 }
 
 export const calculateExperienceTimeInMonths = (startDate, endDate) => {
-  const currentDate = endDate ? new Date(endDate) : new Date()
+  const lastDate = endDate ? new Date(endDate) : new Date()
   const givenDate = new Date(startDate)
 
-  const currentYear = currentDate.getFullYear()
-  const currentMonth = currentDate.getMonth()
+  const lastYear = lastDate.getFullYear()
+  const lastMonth = lastDate.getMonth()
   const startYear = givenDate.getFullYear()
   const startMonth = givenDate.getMonth()
 
-  return currentMonth + 12 * currentYear - (startMonth + 12 * startYear)
+  return lastMonth + 12 * lastYear - (startMonth + 12 * startYear)
 }
 
 export const convertMonthsToYears = (
@@ -40,15 +40,16 @@ export const convertMonthsToYears = (
   return addRemainingMonths(months)
 }
 
-export const hasAtLeastOneYear = (monthsPerYear) => {
-  if (monthsPerYear < 1) return false
-  return true
-}
+export const hasAtLeastOneYear = (monthsPerYear) =>
+  monthsPerYear >= 1 ? true : false
 
 export const addRemainingMonths = (months) => {
   const module = months % 12
-  if (module !== 0) {
-    return `${module} month${module > 1 ? `s` : ''}`
+  const shouldAddMonths = module !== 0
+  const isPlural = module > 1
+
+  if (shouldAddMonths) {
+    return `${module} month${isPlural ? `s` : ''}`
   }
 
   return null
