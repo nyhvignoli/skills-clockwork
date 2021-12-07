@@ -25,7 +25,7 @@
   position: absolute;
   width: 1000px;
   background-size: cover;
-  top: 0px;
+  top: 24px;
   right: 0px;
   bottom: 0px;
   opacity: 0.28;
@@ -39,8 +39,7 @@
   align-items: center;
   justify-content: space-between;
   text-align: end;
-  padding: 24px 0;
-  margin-bottom: 24px;
+  padding-top: 24px;
 }
 
 .Profile {
@@ -60,7 +59,7 @@
 
 h1 {
   color: rgba(72, 255, 215, 0.8);
-  margin: 24px 0 12px 0;
+  margin: 24px 0;
   opacity: 0.85;
 }
 
@@ -88,10 +87,16 @@ h2 {
   text-align: end;
 }
 
+h3,
 span {
   font-size: 18px;
+  font-weight: normal;
   opacity: 0.6;
   font-style: italic;
+}
+
+h3 {
+  margin: 24px;
 }
 
 p {
@@ -144,7 +149,7 @@ footer {
 
   .App::before {
     width: 800px;
-    top: 100px;
+    top: 80px;
     background-size: contain;
   }
 
@@ -169,7 +174,7 @@ footer {
 
   .App::before {
     width: 800px;
-    top: -60px;
+    top: -18px;
     background-size: cover;
   }
 

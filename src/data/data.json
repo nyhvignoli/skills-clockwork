@@ -1,0 +1,99 @@
+{
+  "totalExperience": {
+    "startDate": "2020-03-15"
+  },
+  "skills": [
+    {
+      "name": "GIT",
+      "startDate": "2020-09-15"
+    },
+    {
+      "name": "HTML5",
+      "startDate": "2020-09-18"
+    },
+    {
+      "name": "CSS3",
+      "startDate": "2020-09-18"
+    },
+    {
+      "name": "Javascript",
+      "startDate": "2020-10-04"
+    },
+    {
+      "name": "React",
+      "startDate": "2020-10-13"
+    },
+    {
+      "name": "Styled Components",
+      "startDate": "2020-10-13"
+    },
+    {
+      "name": "API Integration (Frontend)",
+      "startDate": "2020-10-26"
+    },
+    {
+      "name": "Material UI",
+      "startDate": "2020-12-04"
+    },
+    {
+      "name": "Typescript",
+      "startDate": "2021-01-05"
+    },
+    {
+      "name": "Node",
+      "startDate": "2021-01-05"
+    },
+    {
+      "name": "API Development (Backend)",
+      "startDate": "2021-01-05"
+    },
+    {
+      "name": "Express",
+      "startDate": "2021-01-06"
+    },
+    {
+      "name": "Knex",
+      "startDate": "2021-01-06"
+    },
+    {
+      "name": "SQL",
+      "startDate": "2021-01-11"
+    },
+    {
+      "name": "Jest",
+      "startDate": "2021-02-08"
+    },
+    {
+      "name": "Java",
+      "startDate": "2020-03-15",
+      "endDate": "2020-09-15"
+    },
+    {
+      "name": "Android Studio",
+      "startDate": "2020-03-15",
+      "endDate": "2020-09-15"
+    },
+    {
+      "name": "Firebase",
+      "startDate": "2020-06-15",
+      "endDate": "2020-09-15"
+    },
+    {
+      "name": "Mocha",
+      "startDate": "2021-04-12",
+      "endDate": "2021-06-04"
+    },
+    {
+      "name": "Storybook",
+      "startDate": "2021-06-07"
+    },
+    {
+      "name": "Theme UI",
+      "startDate": "2021-06-07"
+    },
+    {
+      "name": "MongoDB",
+      "startDate": "2021-06-07"
+    }
+  ]
+}
