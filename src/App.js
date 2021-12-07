@@ -2,7 +2,7 @@ import './App.css'
 import { skills, totalExperience } from './data'
 import profileImg from './assets/profile.jpg'
 import { getExperienceTime } from './helpers'
-import { Header, Content } from './components'
+import { Header, Content, Footer } from './components'
 
 const App = () => {
   return (
@@ -16,7 +16,7 @@ const App = () => {
         experienceTime={getExperienceTime(totalExperience.startDate)}
       />
       <Content title="Experience time by skill" skills={skills} />
-      <footer>© 2021 ~ Developed with ♥ by Aline "Nyh" Vignoli</footer>
+      <Footer text='© 2021 ~ Developed with ♥ by Aline "Nyh" Vignoli' />
     </div>
   )
 }
