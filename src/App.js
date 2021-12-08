@@ -8,10 +8,10 @@ const App = () => {
   return (
     <div className="App">
       <Header
-        title="Hard Skills Clockworks"
+        title="Hard Skills Clockwork"
         name="Nyh Vignoli"
         profession="Full Stack Developer"
-        websiteUrl="http://nyhdevignoli.surge.sh/"
+        websiteUrl="https://nyhdevignoli.surge.sh/"
         profileImg={{ src: profileImg, alt: 'Nyh Vignoli profile' }}
         experienceTime={getExperienceTime(totalExperience.startDate)}
       />
