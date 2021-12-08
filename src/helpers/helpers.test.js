@@ -1,18 +1,23 @@
-import { addRemainingMonths, convertMonthsToYears, hasAtLeastOneYear } from '.'
+import {
+  getRemainingMonths,
+  convertMonthsToYears,
+  convertToPlural,
+  hasAtLeastOneYear
+} from '.'
 
-describe('# addRemainingMonths', () => {
-  it('Should add 1 remaining month given 13 months', () => {
-    const result = addRemainingMonths(13)
+describe('# getRemainingMonths', () => {
+  it('Should return 1 remaining month given 13 months', () => {
+    const result = getRemainingMonths(13)
     expect(result).toBe(`1 month`)
   })
 
-  it('Should add 2 remaining months given 14 months', () => {
-    const result = addRemainingMonths(14)
+  it('Should return 2 remaining months given 14 months', () => {
+    const result = getRemainingMonths(14)
     expect(result).toBe(`2 months`)
   })
 
   it('Should return null given 12 months', () => {
-    const result = addRemainingMonths(12)
+    const result = getRemainingMonths(12)
     expect(result).toBe(null)
   })
 })
@@ -37,56 +42,68 @@ describe('# hasAtLeastOneYear', () => {
 describe('# convertMonthsToYears', () => {
   it('Should return just 1 year', () => {
     const hasAtLeastOneYearMock = jest.fn(() => true)
-    const addRemainingMonthsMock = jest.fn(() => null)
+    const getRemainingMonthsMock = jest.fn(() => null)
     const result = convertMonthsToYears(
       12,
       hasAtLeastOneYearMock,
-      addRemainingMonthsMock
+      getRemainingMonthsMock
     )
     expect(result).toBe(`1 year`)
   })
 
   it('Should return 2 years', () => {
     const hasAtLeastOneYearMock = jest.fn(() => true)
-    const addRemainingMonthsMock = jest.fn(() => null)
+    const getRemainingMonthsMock = jest.fn(() => null)
     const result = convertMonthsToYears(
       24,
       hasAtLeastOneYearMock,
-      addRemainingMonthsMock
+      getRemainingMonthsMock
     )
     expect(result).toBe(`2 years`)
   })
 
   it('Should return 1 year and 2 months', () => {
     const hasAtLeastOneYearMock = jest.fn(() => true)
-    const addRemainingMonthsMock = jest.fn(() => `2 months`)
+    const getRemainingMonthsMock = jest.fn(() => `2 months`)
     const result = convertMonthsToYears(
       14,
       hasAtLeastOneYearMock,
-      addRemainingMonthsMock
+      getRemainingMonthsMock
     )
     expect(result).toBe(`1 year + 2 months`)
   })
 
   it('Should return 2 years and 2 months', () => {
     const hasAtLeastOneYearMock = jest.fn(() => true)
-    const addRemainingMonthsMock = jest.fn(() => `2 months`)
+    const getRemainingMonthsMock = jest.fn(() => `2 months`)
     const result = convertMonthsToYears(
       26,
       hasAtLeastOneYearMock,
-      addRemainingMonthsMock
+      getRemainingMonthsMock
     )
     expect(result).toBe(`2 years + 2 months`)
   })
 
   it('Should return just months', () => {
     const hasAtLeastOneYearMock = jest.fn(() => false)
-    const addRemainingMonthsMock = jest.fn(() => `2 months`)
+    const getRemainingMonthsMock = jest.fn(() => `2 months`)
     const result = convertMonthsToYears(
       2,
       hasAtLeastOneYearMock,
-      addRemainingMonthsMock
+      getRemainingMonthsMock
     )
     expect(result).toBe(`2 months`)
+  })
+})
+
+describe('# convertToPlural', () => {
+  it('Should convert to plural by adding "s"', () => {
+    const result = convertToPlural(2, 'foo')
+    expect(result).toBe(`foos`)
+  })
+
+  it('Should not convert to plural', () => {
+    const result = convertToPlural(1, 'foo')
+    expect(result).toBe(`foo`)
   })
 })
