@@ -1,6 +1,6 @@
 export const getExperienceTime = (startDate, endDate) => {
   const months = calculateExperienceTimeInMonths(startDate, endDate)
-  return convertMonthsToYears(months, hasAtLeastOneYear, addRemainingMonths)
+  return convertMonthsToYears(months, hasAtLeastOneYear, getRemainingMonths)
 }
 
 export const calculateExperienceTimeInMonths = (startDate, endDate) => {
@@ -18,35 +18,39 @@ export const calculateExperienceTimeInMonths = (startDate, endDate) => {
 export const convertMonthsToYears = (
   months,
   hasAtLeastOneYear,
-  addRemainingMonths
+  getRemainingMonths
 ) => {
   const monthsPerYear = months / 12
   const monthsPerYearRounded = Math.floor(monthsPerYear)
+  const yearOrYears = convertToPlural(monthsPerYearRounded, 'year')
+  const hasOneYearMinimum = hasAtLeastOneYear(monthsPerYear)
+  const remainingMonths = getRemainingMonths(months)
+  const shouldAddMonths = remainingMonths !== null
 
-  if (hasAtLeastOneYear(monthsPerYear) && addRemainingMonths(months) === null) {
-    return `${monthsPerYearRounded} year${monthsPerYearRounded > 1 ? `s` : ''}`
+  if (hasOneYearMinimum && shouldAddMonths) {
+    return `${monthsPerYearRounded} ${yearOrYears} + ${remainingMonths}`
   }
 
-  if (hasAtLeastOneYear(monthsPerYear)) {
-    return `${monthsPerYearRounded} year${
-      monthsPerYearRounded > 1 ? `s` : ''
-    } + ${addRemainingMonths(months)}`
+  if (hasOneYearMinimum) {
+    return `${monthsPerYearRounded} ${yearOrYears}`
   }
 
-  return addRemainingMonths(months)
+  return remainingMonths
 }
 
-export const hasAtLeastOneYear = (monthsPerYear) =>
-  monthsPerYear >= 1 ? true : false
+export const hasAtLeastOneYear = (monthsPerYear) => monthsPerYear >= 1
 
-export const addRemainingMonths = (months) => {
+export const getRemainingMonths = (months) => {
   const module = months % 12
   const shouldAddMonths = module !== 0
-  const isPlural = module > 1
+  const monthOrMonths = convertToPlural(module, 'month')
 
   if (shouldAddMonths) {
-    return `${module} month${isPlural ? `s` : ''}`
+    return `${module} ${monthOrMonths}`
   }
 
   return null
 }
+
+export const convertToPlural = (itemQuantity, item) =>
+  itemQuantity > 1 ? `${item}s` : item
